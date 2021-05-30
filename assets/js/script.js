@@ -28,7 +28,6 @@ $(document).ready(function () {
               estadisticas[i].y = 1
             } 
           }
-        console.log(estadisticas)
         
           $("#cardHero").html(`
               <div class="card row container">
