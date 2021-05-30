@@ -20,11 +20,18 @@ $(document).ready(function () {
           powerStatsArr.forEach((element) => {
             estadisticas.push({
               label: element[0],
-              y: element[1],
+              y: element[1]
             });
           });
+          for (let i = 0; i < estadisticas.length; i++) {
+            if (estadisticas[i].y == "null") {
+              estadisticas[i].y = 1
+            } 
+          }
+        console.log(estadisticas)
+        
           $("#cardHero").html(`
-              <div class="card row">
+              <div class="card row container">
               <div class="card-horizontal row">
                 <div class="img-square-wrapper col-12 col-sm-6 text-center">
                   <img
@@ -48,8 +55,6 @@ $(document).ready(function () {
 
           let config = {
             animationEnabled: true,
-            theme: "light2",
-            exportEnabled: true,
             title: {
               text: "Estadísticas de poder para " + nombre,
             },
@@ -58,11 +63,11 @@ $(document).ready(function () {
               {
                 type: "pie",
                 startAngle: 25,
-                toolTipContent: "<b>{label}</b>: {y}%",
+                toolTipContent: "<b>{label}</b>: {y}",
                 showInLegend: "true",
                 legendText: "{label}",
                 indexLabelFontSize: 16,
-                indexLabel: "{label} - {y}%",
+                indexLabel: "{label} - {y}",
                 dataPoints: estadisticas,
               },
             ],
